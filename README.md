@@ -37,8 +37,11 @@ docker build --rm --pull -f ./Dockerfile -t soda-opt:dev-panda .
 
 Check out your code into work
 ```
+# use the submodule
+git submodule update --init --recursive
+# or clone into work
 cd work
-git clone ssh://git@code.sei.cmu.edu:7999/acl/pytorch-iris.git
+git clone a-repo
 ```
 
 Run the container
