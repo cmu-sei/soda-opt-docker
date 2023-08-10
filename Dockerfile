@@ -134,7 +134,6 @@ RUN rm -rf /opt/panda && \
     git clone https://github.com/ferrandi/PandA-bambu.git && \
     cd PandA-bambu && \
     git checkout dev/panda && \
-    git checkout fix/minorIssues && \
     make -f Makefile.init && \
     mkdir obj && \
     cd obj && \
