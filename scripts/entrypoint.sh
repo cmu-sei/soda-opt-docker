@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright 2023 Carnegie Mellon University.
 # MIT (SEI)
 # Permission is hereby granted, free of charge, to any person obtaining a
@@ -26,9 +28,6 @@
 # and unlimited distribution.  Please see Copyright notice for non-US
 # Government use and distribution.
 # DM23-0186
-
-
-#!/bin/bash
 
 # check that values present for user and group id
 if [ "${UID}" -eq "0" ] || [ -z "$GID" ] ; then
