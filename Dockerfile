@@ -46,7 +46,7 @@ RUN python3 -m pip install \
     torchview
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
+RUN apt-get update --fix-missing && \
     apt-get install -y \
     emacs \
     graphviz \
