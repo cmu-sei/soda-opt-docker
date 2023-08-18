@@ -61,22 +61,3 @@ make
 make synth-baseline
 make synth-optimized
 ```
-
-![Lowering](lowering.png)
-
-Steps encoded in the Makefile.
-- `$(ODIR)/01_tosa.mlir`: From pytorch model, create tosa mlir. Tensor
-  Operator Set Architecture. Done by running Python on the script that
-  contains the model and using torch_mlir to compile the model with tosa
-  dialect.
-- `$(ODIR)/02_linalg.mlir`: Lower the tosa dialect to linalg dialect using
-  `tosa_to_linalg.sh` script provided by soda-opt, which invokes an `mlir-opt`
-  pass. Creates linalg mlir with tensors and then removes tensors.
-- `$(ODIR)/03-[01]{02}(03)_linalg_[searched]{outlined}(isolated).mlir`:
-  Use soda-opt to outline and isolate operations. "Searched" has calls to
-  `soda.launch`. "Outlined" has a `soda.module` for the kernel. "Isolated"
-  contains only the isolated kernel.
-- `$(ODIR)/04_llvm_baseline.mlir`: Lower the isolated kernel to llvm IR.
-- `$(ODIR)/05_llvm_baseline.ll`: Translate mlir to llvm ir.
-- `synth-baseline`: Create verilog for the kernel using bambu.
-- `synth-optimized`:
